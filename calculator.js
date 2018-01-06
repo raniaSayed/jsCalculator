@@ -11,28 +11,28 @@ for (var i = buttons.length - 1; i >= 0; i--) {
     str+=target;
 	res.textContent = str;
 	if(target=== "="){
-	str = str.substr(0,str.length-1);
-	var numbers = str.split("+");
-	operator= "+";
-	if(numbers.length ==1){	
-		numbers = str.split("-");
-		operator = "-";
-
-		if(numbers.length ==1)
-		{
-			numbers = str.split("*");
-			{
-				operator = "*";
-				if(numbers.length ==1)
-				{
-				    numbers = str.split("/");
-				    operator = "/";
-
-				}
-			}
-		}			
+	
+		str = str.substr(0,str.length-1);
+		var numbers = str.split("+");
+		operator= "+";
 		
-	}
+		if(numbers.length ==1){	
+			numbers = str.split("-");
+			operator = "-";
+
+			if(numbers.length ==1)
+			{
+				numbers = str.split("*");
+				{
+					operator = "*";
+					if(numbers.length ==1)
+					{
+					    numbers = str.split("/");
+					    operator = "/";
+					}
+				}
+			}			
+		}
 		numbers[0] = Number(numbers[0]);
 		numbers[1] = Number(numbers[1]);
 		if(operator  =="+")
