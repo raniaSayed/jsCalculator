@@ -22,7 +22,8 @@ var k = 0 ;
 var j = 0 ;
 for (var i = buttons.length - 1; i >= 0; i--) {
 	buttons[i].addEventListener('click',function (event) {
-	var target = event.target.id
+	var target = event.target.id;
+	//res.textContent+=target;
 	if(!isNaN(target)){
 		numbers[k]=Number(target);
 		k++;
@@ -42,7 +43,7 @@ for (var i = buttons.length - 1; i >= 0; i--) {
 			result =(numbers[0] * numbers[1])
 		else if(operators[0] =="/")
 			result =(numbers[0] / numbers[1])
-		res.innerHTML = "Result = "+result;
+		res.innerHTML += "result =  "+result;
 		numbers = [];
 		operators = [];
 		k= j = 0;
