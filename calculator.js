@@ -1,54 +1,55 @@
-var one = document.getElementById("1");
-var two = document.getElementById("2");
-var three = document.getElementById("3");
-var four = document.getElementById("4");
-var five = document.getElementById("5");
-var six = document.getElementById("6");
-var seven = document.getElementById("7");
-var eight = document.getElementById("8");
-var nine = document.getElementById("9");
-var plus = document.getElementById("+");
-var minus = document.getElementById("-");
-var divide = document.getElementById("/");
-var multiply = document.getElementById("*");
-var equal = document.getElementById("=");
-
 var numbers = [];
-var operators = [] ;
 var res = document.getElementById("res");
 
 var buttons = document.getElementsByTagName("button");
 var k = 0 ;
 var j = 0 ;
+var str="";
 for (var i = buttons.length - 1; i >= 0; i--) {
 	buttons[i].addEventListener('click',function (event) {
 	var target = event.target.id;
-	//res.textContent+=target;
-	if(!isNaN(target)){
-		numbers[k]=Number(target);
-		k++;
-		console.log(i);
-	}else{
-		operators[j] = target;
-		j++
+    str+=target;
+	res.textContent = str;
+	if(target=== "="){
+	str = str.substr(0,str.length-1);
+	var numbers = str.split("+");
+	operator= "+";
+	if(numbers.length ==1){	
+		numbers = str.split("-");
+		operator = "-";
+
+		if(numbers.length ==1)
+		{
+			numbers = str.split("*");
+			{
+				operator = "*";
+				if(numbers.length ==1)
+				{
+				    numbers = str.split("/");
+				    operator = "/";
+
+				}
+			}
+		}			
+		
 	}
-	console.log("op:"+operators[1])
-	if(operators[1] === "="){
-		var result = "";
-		if(operators[0] =="+")
-			result =(numbers[0] + numbers[1])
-		else if(operators[0] =="-")
-			result =(numbers[0] - numbers[1])
-		else if(operators[0] =="*")
-			result =(numbers[0] * numbers[1])
-		else if(operators[0] =="/")
-			result =(numbers[0] / numbers[1])
-		res.innerHTML += "result =  "+result;
+		numbers[0] = Number(numbers[0]);
+		numbers[1] = Number(numbers[1]);
+		if(operator  =="+")
+			str =(numbers[0] + numbers[1])
+		else if(operator  =="-")
+			str =(numbers[0] - numbers[1])
+		else if(operator =="*")
+			str =(numbers[0] * numbers[1])
+		else if(operator  =="/")
+			str =(numbers[0] / numbers[1])
+		console.log(numbers);
+		console.log(str);
+		res.innerHTML += str;
 		numbers = [];
 		operators = [];
 		k= j = 0;
-
-
+		str="";
 	}
 
 });
